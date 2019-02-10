@@ -1,3 +1,12 @@
+_app_dir = '/var/www/rails_app/chimera'
+_tmp_dir = '/var/run/puma/chimera'
+
+directory _app_dir
+pidfile "#{_tmp_dir}/puma.pid"
+state_path "#{_tmp_dir}/puma.state"
+bind "unix:#{_tmp_dir}/puma.sock"
+
+
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers: a minimum and maximum.
 # Any libraries that use thread pools should be configured to match
