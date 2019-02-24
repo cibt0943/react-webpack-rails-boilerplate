@@ -4,9 +4,8 @@ html
     title chimera
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_pack_tag 'application'
     = yield :stylesheet
   body
     = yield
-    = javascript_pack_tag 'application'
+    = javascript_include_tag '/packs/bundle.js'
     = yield :javascript
