@@ -23,6 +23,7 @@ module.exports = (env, argv) => {
                 // publicPath: ''
               },
             },
+            // CSSをバンドルするための設定
             {
               loader: 'css-loader',
               options: {
@@ -30,8 +31,27 @@ module.exports = (env, argv) => {
                 url: false,
                 // ソースマップの作成
                 sourceMap: IS_DEVELOPMENT,
+                // Sass+PostCSSの場合は2を指定
+                // 0 => no loaders (default);
+                // 1 => postcss-loader;
+                // 2 => postcss-loader, sass-loader
+                importLoaders: 2,
               },
             },
+            // PostCSSのための設定
+            {
+              loader: 'postcss-loader',
+              options: {
+                // PostCSS側でもソースマップを有効にする
+                sourceMap: true,
+                plugins: [
+                  // Autoprefixerを有効化
+                  // ベンダープレフィックスを自動付与する
+                  require('autoprefixer')({ grid: true })
+                ]
+              },
+            },
+            // Sassをバンドルするための設定
             {
               loader: 'sass-loader',
               options: {
