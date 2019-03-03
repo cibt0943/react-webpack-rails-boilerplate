@@ -4,9 +4,9 @@ html
     title chimera
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag '/packs/bundle.css'
+    = stylesheet_link_tag asset_bundle_path 'main.css'
     = yield :stylesheet
   body
     = yield
-    = javascript_include_tag '/packs/bundle.js'
+    = javascript_include_tag asset_bundle_path 'main.js'
     = yield :javascript

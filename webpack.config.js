@@ -1,5 +1,6 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const ManifestPlugin = require('webpack-manifest-plugin')
 
 module.exports = (env, argv) => {
   const IS_DEVELOPMENT = (argv.mode === 'development')
@@ -7,7 +8,7 @@ module.exports = (env, argv) => {
   return {
     entry: './app/frontend/app.js',
     output: {
-      filename: 'bundle.js',
+      filename: '[name]-[hash].js',
       path: path.resolve(__dirname, 'public', argv.out || 'packs'),
       // publicPath: ''
     },
@@ -65,7 +66,12 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: 'bundle.css',
+        filename: '[name]-[hash].css',
+      }),
+      new ManifestPlugin({
+        fileName: 'manifest.json',
+        publicPath: '/' + (argv.out || 'packs') + '/',
+        writeToFileEmit: true,
       }),
     ],
   }
