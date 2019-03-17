@@ -35,5 +35,11 @@ module Chimera
       g.helper      false
       g.channel     assets: false
     end
+
+    # lib配下のファイルをdevelopmentではauto_load,productionではeager_laodする
+    config.paths.add 'lib', eager_load: true
+
+    # webpack.ymlを読み込む
+    config.x.webpack = config_for('webpack')
   end
 end

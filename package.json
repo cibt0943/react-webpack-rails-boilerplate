@@ -2,6 +2,7 @@
   "name": "chimera",
   "private": true,
   "scripts": {
+    "start": "webpack-dev-server --mode development --progress --colors",
     "dev": "webpack --mode development --progress --colors",
     "build": "webpack --mode production --progress --colors"
   },
@@ -15,6 +16,7 @@
     "sass-loader": "^7.1.0",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1",
     "webpack-manifest-plugin": "^2.0.4"
   }
 }

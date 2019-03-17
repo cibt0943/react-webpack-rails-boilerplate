@@ -1,12 +1,14 @@
+require 'open-uri'
+
 module ApplicationHelper
   def asset_bundle_path(name)
-    manifest && manifest[name].present? ? manifest[name] : name
-    # manifest.fetch(name)
+    manifest.fetch(name)
   end
 
   private
 
   def manifest
-    @manifest ||= JSON.parse(File.read('public/packs/manifest.json'))
+    webpack = Rails.application.config.x.webpack.deep_symbolize_keys
+    @manifest ||= JSON.parse(File.read("#{webpack[:public_root_path]}/#{webpack[:output_path]}/manifest.json"))
   end
 end
