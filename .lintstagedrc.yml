@@ -1,0 +1,13 @@
+linters:
+  "./app/frontend/**/*.{css,scss}":
+    - stylelint --fix
+    - git add
+  "./app/frontend/**/*.{ts,tsx}":
+    - tslint --fix
+    - git add
+  "*.js":
+    - prettier --write
+    - git add
+
+ignore:
+  - public/**/*
