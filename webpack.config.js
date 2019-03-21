@@ -10,7 +10,7 @@ module.exports = (env, argv) => {
   const config = jsYaml.safeLoad(fs.readFileSync('config/webpack.yml', 'utf-8'))[argv.mode]
 
   return {
-    entry: './app/frontend/app.js',
+    entry: './app/frontend/app.ts',
 
     output: {
       filename: '[name]-[hash].js',
@@ -19,6 +19,22 @@ module.exports = (env, argv) => {
     },
 
     devtool: isDevelopment ? 'source-map' : 'none',
+
+    resolve: {
+      // modules: [
+      //   "node_modules",
+      //   path.resolve(__dirname, "app/webpacks"),
+      // ],
+
+      extensions: [
+        ".ts",
+        ".tsx",
+        ".js",
+        ".jsx",
+        ".scss",
+        ".css",
+      ]
+    },
 
     module: {
       rules: [
