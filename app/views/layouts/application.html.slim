@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title chimera
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag asset_bundle_path 'main.css'
+    = yield :stylesheet
+  body
+    = yield
+    = javascript_include_tag asset_bundle_path 'main.js'
+    = yield :javascript
